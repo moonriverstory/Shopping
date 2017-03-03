@@ -12,7 +12,7 @@
 	 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <!--使用spring组件扫描,一次性配置此包下所有的Handler-->
-    <context:component-scan base-package="controller"/>
+    <!--<context:component-scan base-package="controller"/>-->
 
     <!-- 开启aop对类代理,用cglib需要配置这个开关 -->
     <!-- proxy-target-class="true" 与proxy-target-class="false"的区别：
@@ -43,8 +43,8 @@
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="converter.CustomDateConverter"/>
-                <bean class="converter.StringTrimConverter"/>
+                <!--<bean class="converter.CustomDateConverter"/>-->
+                <!--<bean class="converter.StringTrimConverter"/>-->
             </set>
         </property>
     </bean>
@@ -61,7 +61,7 @@
     </bean>
 
     <!--定义统一异常处理器-->
-    <bean class="exception.CustomExceptionResolver"></bean>
+    <!--<bean class="exception.CustomExceptionResolver"></bean>-->
 
     <!-- 文件上传 CommonsMultipartResolver依赖我们传入的fileupload jar包-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

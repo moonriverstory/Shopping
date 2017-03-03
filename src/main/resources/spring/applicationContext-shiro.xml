@@ -17,7 +17,7 @@
         <property name="filters">
             <map>
                 <!-- 将自定义的FormAuthenticationFilter注入shiroFiler中 -->
-                <entry key="authc" value-ref="formAuthenticationFilter"/>
+                <!--<entry key="authc" value-ref="formAuthenticationFilter"/>-->
             </map>
         </property>
 
@@ -71,15 +71,15 @@
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
     </bean>
 
+    <!-- 缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
+    </bean>
+
     <!-- 凭证匹配器 -->
     <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
         <property name="hashAlgorithmName" value="md5"/>
         <property name="hashIterations" value="1"/>
-    </bean>
-
-    <!-- 缓存管理器 -->
-    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
     </bean>
 
     <!-- 会话管理器 -->
@@ -91,15 +91,15 @@
     </bean>
 
     <!--自定义form认证过滤器-->
-    <bean id="formAuthenticationFilter"
-          class="shiro.CustomFromAuthenticationFilter">
-        <!-- 表单中账号的input名称 -->
-        <property name="usernameParam" value="username"/>
-        <!-- 表单中密码的input名称 -->
-        <property name="passwordParam" value="password"/>
-        <!--记住我input的名称-->
-        <property name="rememberMeParam" value="rememberMe"/>
-    </bean>
+    <!--<bean id="formAuthenticationFilter"-->
+          <!--class="shiro.CustomFromAuthenticationFilter">-->
+        <!--&lt;!&ndash; 表单中账号的input名称 &ndash;&gt;-->
+        <!--<property name="usernameParam" value="username"/>-->
+        <!--&lt;!&ndash; 表单中密码的input名称 &ndash;&gt;-->
+        <!--<property name="passwordParam" value="password"/>-->
+        <!--&lt;!&ndash;记住我input的名称&ndash;&gt;-->
+        <!--<property name="rememberMeParam" value="rememberMe"/>-->
+    <!--</bean>-->
 
     <!-- rememberMeManager管理器 -->
     <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">

@@ -4,7 +4,7 @@
      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <!--商品配置的service-->
-    <bean id="itemsService" class="service.impl.ItemsServiceImpl"/>
+    <!--<bean id="itemsService" class="service.impl.ItemsServiceImpl"/>-->
 
     <!--系统认证授权的service-->
     <bean id="sysService" class="service.impl.SysServiceImpl"/>

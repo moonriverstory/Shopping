@@ -28,9 +28,9 @@
     </tx:advice>
 
     <!--配置aop-->
-    <aop:config>
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* service.impl.*.*(..))"/>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut="execution(* service.impl.*.*(..))"/>-->
+    <!--</aop:config>-->
 
 
 </beans>
