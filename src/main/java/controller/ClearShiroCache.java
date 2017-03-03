@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import shiro.CustomRealm;
 
-/**
- * Created by codingBoy on 16/11/23.
- */
+
 @Controller
 public class ClearShiroCache
 {

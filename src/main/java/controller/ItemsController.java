@@ -21,9 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Created by codingBoy on 16/11/15.
- */
+
 @Controller
 //定义url的根路径，访问时根路径+方法名的url
 @RequestMapping("/items")
@@ -187,7 +185,7 @@ public class ItemsController {
         if (pictureFile!=null&&pictureFile.getOriginalFilename()!=null&&pictureFile.getOriginalFilename().length()>0)
         {
             //图片上传成功后，将图片的地址写到数据库
-            String filePath="/Users/codingBoy/Pictures/";
+            String filePath="/Pictures/";
             String originalFilename=pictureFile.getOriginalFilename();
 
             String newFileName= UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));

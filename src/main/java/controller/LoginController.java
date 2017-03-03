@@ -11,7 +11,6 @@ import service.SysService;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by codingBoy on 16/11/18.
  * 完成登陆和退出
  */
 @Controller

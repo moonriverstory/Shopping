@@ -19,9 +19,7 @@ import service.SysService;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by codingBoy on 16/11/20.
- */
+
 public class CustomRealm extends AuthorizingRealm
 {
 

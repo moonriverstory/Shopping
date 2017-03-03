@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pojo.ItemsCustom;
 
-/**
- * Created by codingBoy on 16/11/18.
- */
+
 @Controller
 public class JsonTest
 {
