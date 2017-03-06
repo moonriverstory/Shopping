@@ -12,7 +12,7 @@
   </head>
   <body>
   <%
-    response.sendRedirect("first.action");
+    response.sendRedirect("first");
   %>
   </body>
 </html>
