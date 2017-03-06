@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Shiro Shop</title>
   </head>
   <body>
-  $END$
+  <%
+    response.sendRedirect("first.action");
+  %>
   </body>
 </html>

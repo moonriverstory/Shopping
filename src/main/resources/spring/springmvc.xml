@@ -20,55 +20,45 @@
     如果proxy-target-class属值被设置为false或者这个属性被省略，那么标准的JDK 基于接口的代理 -->
     <aop:config proxy-target-class="true"></aop:config>
 
+    <!-- 当在web.xml中DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
+    <mvc:default-servlet-handler/>
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+
     <!--mvc的注解驱动器-->
-    <mvc:annotation-driven validator="validator" conversion-service="conversionService"></mvc:annotation-driven>
-
-    <!-- 验证器 -->
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <!-- 如果不指定则默认使用classpath下的ValidationMessages.properties -->
-        <property name="validationMessageSource" ref="messageSource"/>
-    </bean>
-    <!-- 校验错误信息配置文件 -->
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basenames">
-            <list>
-                <value>CustomValidationMessages</value>
-            </list>
-        </property>
-        <property name="fileEncodings" value="utf-8"/>
-        <property name="cacheSeconds" value="120"/>
-    </bean>
-
-    <!--转换器-->
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="converters">
-            <set>
-                <!--<bean class="converter.CustomDateConverter"/>-->
-                <!--<bean class="converter.StringTrimConverter"/>-->
-            </set>
-        </property>
-    </bean>
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 
     <!-- 开启shiro注解支持 -->
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>
 
-    <!--配置视图解析器 - 要求将jstl的包加到classpath-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
-        <property name="suffix" value=".jsp"/>
+
+    <!--转换器-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="converter.CustomDateConverter"/>
+                <bean class="converter.StringTrimConverter"/>
+            </set>
+        </property>
     </bean>
+
+    <!--配置视图解析器 - 要求将jstl的包加到classpath-->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    <!--</bean>-->
 
     <!--定义统一异常处理器-->
     <!--<bean class="exception.CustomExceptionResolver"></bean>-->
 
     <!-- 文件上传 CommonsMultipartResolver依赖我们传入的fileupload jar包-->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!-- 设置上传文件的最大尺寸为5MB -->
-        <property name="maxUploadSize">
-            <value>5242880</value>
-        </property>
-    </bean>
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+        <!--&lt;!&ndash; 设置上传文件的最大尺寸为5MB &ndash;&gt;-->
+        <!--<property name="maxUploadSize">-->
+            <!--<value>5242880</value>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 </beans>

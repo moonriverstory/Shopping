@@ -27,10 +27,10 @@
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.3.RELEASE" />
@@ -39,6 +39,9 @@
           <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.2" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.2.4.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.2.1.Final" />
+          <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.1.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">
