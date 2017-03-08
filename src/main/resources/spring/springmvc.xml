@@ -12,7 +12,7 @@
 	 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <!--使用spring组件扫描,一次性配置此包下所有的Handler-->
-    <!--<context:component-scan base-package="controller"/>-->
+    <context:component-scan base-package="controller"/>
 
     <!-- 开启aop对类代理,用cglib需要配置这个开关 -->
     <!-- proxy-target-class="true" 与proxy-target-class="false"的区别：
@@ -20,10 +20,7 @@
     如果proxy-target-class属值被设置为false或者这个属性被省略，那么标准的JDK 基于接口的代理 -->
     <aop:config proxy-target-class="true"></aop:config>
 
-    <!-- 当在web.xml中DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
-    <mvc:default-servlet-handler/>
-    <!-- 静态资源映射 -->
-    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+
 
     <!--mvc的注解驱动器-->
     <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
@@ -44,14 +41,8 @@
         </property>
     </bean>
 
-    <!--配置视图解析器 - 要求将jstl的包加到classpath-->
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
-        <!--<property name="suffix" value=".jsp"/>-->
-    <!--</bean>-->
-
     <!--定义统一异常处理器-->
-    <!--<bean class="exception.CustomExceptionResolver"></bean>-->
+    <bean class="exception.CustomExceptionResolver"></bean>
 
     <!-- 文件上传 CommonsMultipartResolver依赖我们传入的fileupload jar包-->
     <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
@@ -60,5 +51,26 @@
             <!--<value>5242880</value>-->
         <!--</property>-->
     <!--</bean>-->
+
+    <bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/log4j.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--log4j-->
+    <!--<context:property-placeholder location="classpath:/log4j.properties"/>-->
+
+    <!--配置JSP视图解析器,显示ViewResolver-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 静态资源映射:当在web.xml中DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
+    <mvc:default-servlet-handler/>
 
 </beans>

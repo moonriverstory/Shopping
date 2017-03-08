@@ -8,9 +8,9 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <!-- loginUrl认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由formAuthenticationFilter进行表单认证 -->
-        <property name="loginUrl" value="/login.action"/>
+        <property name="loginUrl" value="/login"/>
         <!--认证成功统一跳转到first.actio，建议不配置，不配置的话shiro认证成功会自动到上一个请求路径-->
-        <property name="successUrl" value="/first.action"/>
+        <property name="successUrl" value="/first"/>
         <property name="unauthorizedUrl" value="/refuse.jsp"/>
 
         <!--自定义filter-->
@@ -24,7 +24,31 @@
         <!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
         <property name="filterChainDefinitions">
             <value>
+                <!--对静态资源设置匿名访问-->
+                /images/**=anon
+                /js/**=anon
+                /style/**=anon
 
+                <!--验证码-->
+                /validatecode.jsp=anon
+
+                <!--请求这个地址就自动退出-->
+                /logout.action=logout
+
+                <!--商品查询需要商品查询权限，取消url拦截配置，采用注解授权-->
+                /items/queryItems.action=perms[item:query]
+                <!--商品修改需要商品修改权限-->
+                /items/editItems.action=perms[item:edit]
+
+                <!--配置记住我或认证通过可以访问的地址-->
+                /index.jsp=user
+                /first.action=user
+                /welcome.jsp=user
+
+                <!-- -/**=authc 表示所有的url都必须认证通过才可以访问- -->
+                /** = authc
+
+                <!--/**=anon 表示所有的url都可以匿名访问-->
             </value>
         </property>
     </bean>
