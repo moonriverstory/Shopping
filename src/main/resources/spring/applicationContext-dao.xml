@@ -49,9 +49,9 @@
         <!-- 数据源 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- mybatis配置文件 -->
-        <property name="configLocation" value="classpath:/mybatis/SqlMapConfig.xml"/>
+        <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"/>
         <!--扫描sql配置文件:mapper需要的xml文件-->
-        <property name="mapperLocations" value="classpath:/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
     <!--

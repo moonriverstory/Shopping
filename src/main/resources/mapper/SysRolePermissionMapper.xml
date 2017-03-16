@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.SysRolePermissionMapper" >
+<mapper namespace="dao.SysRolePermissionMapper" >
   <resultMap id="BaseResultMap" type="pojo.SysRolePermission" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="sys_role_id" property="sysRoleId" jdbcType="VARCHAR" />
