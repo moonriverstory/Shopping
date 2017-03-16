@@ -61,9 +61,9 @@
         <!--会话管理器-->
         <property name="sessionManager" ref="sessionManager"/>
         <!--缓存管理器-->
-        <property name="cacheManager" ref="cacheManager"/>
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
         <!-- 记住我 -->
-        <property name="rememberMeManager" ref="rememberMeManager"/>
+        <!--<property name="rememberMeManager" ref="rememberMeManager"/>-->
     </bean>
 
     <!--自定义realm-->
