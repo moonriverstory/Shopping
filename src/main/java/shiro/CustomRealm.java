@@ -20,8 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CustomRealm extends AuthorizingRealm
-{
+public class CustomRealm extends AuthorizingRealm {
 
     //注入service
     @Autowired
@@ -39,41 +38,42 @@ public class CustomRealm extends AuthorizingRealm
 
         //token是用户输入的
         //第一步:丛token中取出身份信息
-        String userCode= (String) token.getPrincipal();
+        String userCode = (String) token.getPrincipal();
 
         //第二步:根据用户输入的userCode丛数据库查询
-        SysUser sysUser =null;
+        SysUser sysUser = null;
         try {
-            sysUser=sysService.findSysUserByUserCode(userCode);
+            sysUser = sysService.findSysUserByUserCode(userCode);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
         //判断是否从数据库中查询到用户信息
-        if (sysService==null)
-        {
+        if (sysService == null) {
             return null;
         }
 
         //从数据库查询到的密码
-        String password=sysUser.getPassword();
+        String password = sysUser.getPassword();
 
         //盐salt
-        String salt=sysUser.getSalt();
+        String salt = sysUser.getSalt();
         System.out.println(salt);
 
-       //activeUser就是用户的身份信息
-        ActiveUser activeUser=new ActiveUser();
+        //activeUser就是用户的身份信息
+        ActiveUser activeUser = new ActiveUser();
         activeUser.setUserid(sysUser.getId());
         activeUser.setUsercode(sysUser.getUsercode());
         activeUser.setUsername(sysUser.getUsername());
+        System.out.println("username: " + sysUser.getUsername());
+        System.out.println("password: " + password);
 
         //根据用户id取出菜单
         //通过service取出菜单
-        List<SysPermission> menus=null;
+        List<SysPermission> menus = null;
         try {
-            menus=sysService.findMenuListByUserId(sysUser.getId());
+            menus = sysService.findMenuListByUserId(sysUser.getId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,8 +88,8 @@ public class CustomRealm extends AuthorizingRealm
         //如果查询到，返回认证信息AuthenticationInfo
 
         ///将activeUser设置到simpleAuthenticationInfo
-        SimpleAuthenticationInfo simpleAuthenticationInfo=new
-                SimpleAuthenticationInfo(activeUser,password, ByteSource.Util.bytes(salt),this.getName());
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new
+                SimpleAuthenticationInfo(activeUser, password, ByteSource.Util.bytes(salt), this.getName());
 
 
         return simpleAuthenticationInfo;
@@ -101,30 +101,28 @@ public class CustomRealm extends AuthorizingRealm
 
         //从principals获取主身份信息
         //将getPrimaryPrincipal方法返回值转为真实身份类型(在上边的goGetAuthenticationInfo认证通过填充到SimpleAuthenticationInfo)
-        ActiveUser activeUser= (ActiveUser) principals.getPrimaryPrincipal();
+        ActiveUser activeUser = (ActiveUser) principals.getPrimaryPrincipal();
 
         //根据身份信息获取权限信息,
         //从数据库中获取到的动态权限数据
-        List<SysPermission> permissionList=null;
+        List<SysPermission> permissionList = null;
         try {
-            permissionList=sysService.findPermissionListByUserId(activeUser.getUserid());
+            permissionList = sysService.findPermissionListByUserId(activeUser.getUserid());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        List<String> permissions=new ArrayList<>();
+        List<String> permissions = new ArrayList<>();
 
-        if (permissionList!=null)
-        {
-            for (SysPermission sysPermission:permissionList)
-            {
+        if (permissionList != null) {
+            for (SysPermission sysPermission : permissionList) {
                 //将数据库中的权限标签符放入集合
                 permissions.add(sysPermission.getPercode());
             }
         }
 
         //查到权限数据，返回授权信息(包括上边的permissions)
-        SimpleAuthorizationInfo simpleAuthorizationInfo=new SimpleAuthorizationInfo();
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 
         //将上边查询到授权信息填充到simpleAuthorizationInfo对象中
         simpleAuthorizationInfo.addStringPermissions(permissions);
@@ -137,7 +135,6 @@ public class CustomRealm extends AuthorizingRealm
         PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
         super.clearCache(principals);
     }
-
 
 
 }
