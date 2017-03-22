@@ -15,6 +15,7 @@ import pojo.ActiveUser;
 import pojo.SysPermission;
 import pojo.SysUser;
 import service.SysService;
+import util.MD5;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,15 +60,17 @@ public class CustomRealm extends AuthorizingRealm {
 
         //盐salt
         String salt = sysUser.getSalt();
-        System.out.println(salt);
+
 
         //activeUser就是用户的身份信息
         ActiveUser activeUser = new ActiveUser();
         activeUser.setUserid(sysUser.getId());
         activeUser.setUsercode(sysUser.getUsercode());
         activeUser.setUsername(sysUser.getUsername());
+        System.out.println("salt:" + salt);
         System.out.println("username: " + sysUser.getUsername());
         System.out.println("password: " + password);
+        System.out.println("password 12345: " + (new MD5()).getMD5ofStr("12345"));
 
         //根据用户id取出菜单
         //通过service取出菜单
@@ -90,6 +93,7 @@ public class CustomRealm extends AuthorizingRealm {
         ///将activeUser设置到simpleAuthenticationInfo
         SimpleAuthenticationInfo simpleAuthenticationInfo = new
                 SimpleAuthenticationInfo(activeUser, password, ByteSource.Util.bytes(salt), this.getName());
+        System.out.println("simpleAuthenticationInfo: " + simpleAuthenticationInfo.toString());
 
 
         return simpleAuthenticationInfo;
