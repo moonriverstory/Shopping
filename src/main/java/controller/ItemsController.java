@@ -202,23 +202,11 @@ public class ItemsController {
 
 
         itemsService.updateItems(id,itemsCustom);
-        //请求转发
-//        return "forward:queryItems.action";
 
-
-//        return "editItem";
         //重定向
-        return "redirect:queryItems.action";
+        return "redirect:queryItems";
     }
-//
-//    //自定义属性编辑器
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder) throws  Exception{
-//
-//        //Date.class必须是与controller方法形参pojo属性一致的date类型，这里是java.converter.Date
-//        binder.registerCustomEditor(Date.class,new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH-mm-ss"),true));
-//
-//    }
+
 
     //删除商品
     @RequestMapping("/deleteItems")

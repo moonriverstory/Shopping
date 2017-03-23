@@ -63,7 +63,7 @@
 	function logout() {
 		_confirm('您确定要退出本系统吗?',null,
 				function(){
-					location.href = '${baseurl}logout.action';
+					location.href = '${baseurl}logout';
 				}
 		)
 	}

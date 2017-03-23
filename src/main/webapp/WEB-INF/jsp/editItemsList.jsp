@@ -19,7 +19,7 @@
 	</script>
 </head>
 <body> 
-<form name="itemsForm" action="${pageContext.request.contextPath }/items/queryItem" method="post">
+<form name="itemsForm" action="${pageContext.request.contextPath }/items/queryItems" method="post">
 查询条件：
 <table width="100%" border=1>
 <tr>
