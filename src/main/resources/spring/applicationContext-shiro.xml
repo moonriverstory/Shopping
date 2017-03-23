@@ -27,22 +27,22 @@
                 <!--对静态资源设置匿名访问-->
                 /images/**=anon
                 /js/**=anon
-                /style/**=anon
+                /styles/**=anon
 
                 <!--验证码-->
                 /validatecode.jsp=anon
 
                 <!--请求这个地址就自动退出-->
-                /logout.action=logout
+                /logout=logout
 
                 <!--商品查询需要商品查询权限，取消url拦截配置，采用注解授权-->
-                /items/queryItems.action=perms[item:query]
+                /items/queryItems=perms[item:query]
                 <!--商品修改需要商品修改权限-->
-                /items/editItems.action=perms[item:edit]
+                /items/editItems=perms[item:edit]
 
                 <!--配置记住我或认证通过可以访问的地址-->
                 /index.jsp=user
-                /first.action=user
+                /first=user
                 /welcome.jsp=user
 
                 <!-- -/**=authc 表示所有的url都必须认证通过才可以访问- -->

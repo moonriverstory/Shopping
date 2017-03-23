@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 		function deleteItems() {
 			//将form的action指向删除商品的地址
-			document.itemsForm.action="${pageContext.request.contextPath}/items/deleteItems.action";
+			document.itemsForm.action="${pageContext.request.contextPath}/items/deleteItems";
 
 			//进行form提交
 			document.itemsForm.submit();
@@ -22,10 +22,10 @@
 <body>
 当前用户:${usercode}
 <c:if test="${usercode!=null}">
-	<a href="${pageContext.request.contextPath}/logout.action">退出</a>
+	<a href="${pageContext.request.contextPath}/logout">退出</a>
 </c:if>
 
-<form name="itemsForm" action="${pageContext.request.contextPath }/items/queryItem.action" method="post">
+<form name="itemsForm" action="${pageContext.request.contextPath }/items/queryItem" method="post">
 查询条件：
 <table width="100%" border=1>
 <tr>
@@ -65,7 +65,7 @@
 	<td>
 		<!--有item:update权限才现实修改链接，没有权限则不显示修改链接-->
 		<shiro:hasPermission name="item:update">
-			<a href="${pageContext.request.contextPath }/items/editItems.action?id=${item.id}">修改</a>
+			<a href="${pageContext.request.contextPath }/items/editItems?id=${item.id}">修改</a>
 		</shiro:hasPermission>
 	</td>
 	<td><a href="${pageContext.request.contextPath }/items/viewItems/${item.id}">商品查看</a></td>

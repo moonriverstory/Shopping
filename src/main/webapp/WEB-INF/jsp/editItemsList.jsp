@@ -10,7 +10,7 @@
 	<script type="text/javascript">
 		function updateItems() {
 			//将form的action指向删除商品的地址
-			document.itemsForm.action="${pageContext.request.contextPath}/items/deleteItems.action";
+			document.itemsForm.action="${pageContext.request.contextPath}/items/deleteItems";
 
 			//进行form提交
 			document.itemsForm.submit();
@@ -19,7 +19,7 @@
 	</script>
 </head>
 <body> 
-<form name="itemsForm" action="${pageContext.request.contextPath }/items/queryItem.action" method="post">
+<form name="itemsForm" action="${pageContext.request.contextPath }/items/queryItem" method="post">
 查询条件：
 <table width="100%" border=1>
 <tr>
@@ -54,7 +54,7 @@
 	<td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 	<td>${item.detail }</td>
 	
-	<td><a href="${pageContext.request.contextPath }/items/editItems.action?id=${item.id}">修改</a></td>
+	<td><a href="${pageContext.request.contextPath }/items/editItems?id=${item.id}">修改</a></td>
 
 </tr>
 </c:forEach>

@@ -90,7 +90,7 @@
 			欢迎当前用户：${activeUser.username}&nbsp;&nbsp;
 			<A href=javascript:showhelp()>使用帮助</A>
 			&nbsp;&nbsp;
-			<A title='修改密码' ref='modifypwd' href="#" rel='${baseurl}user/updatepwd.action' icon='icon-null' id="modifypwd" >修改密码</A>
+			<A title='修改密码' ref='modifypwd' href="#" rel='${baseurl}user/updatepwd' icon='icon-null' id="modifypwd" >修改密码</A>
 			&nbsp;&nbsp;
 			<A id="loginOut" href=javascript:logout()>退出系统</A>
 
@@ -123,28 +123,6 @@
 				</c:forEach>
 				</ul>
 			</c:if>
-				<%--<ul>--%>
-			 <%--<li><div>--%>
-					<%--<a title="创建采购单" ref="1_1" href="#"--%>
-						<%--rel="${baseurl}items/queryItems.action" icon="icon-log"><span--%>
-						<%--class="icon icon-log">&nbsp;</span><span class="nav"><a href=javascript:addTab('创建采购单','${baseurl}items/queryItems.action')>商品查询</a></span></a>--%>
-				<%--</div></li>--%>
-			<%--<li><div>--%>
-					<%--<a title="提交采购单" ref="1_1" href="#"--%>
-						<%--rel="/purchasing/order/orderList.action?type=1" icon="icon-log"><span--%>
-						<%--class="icon icon-log">&nbsp;</span><span class="nav">提交采购单</span></a>--%>
-				<%--</div></li>--%>
-			<%--<li><div>--%>
-					<%--<a title="部门经理审核" ref="1_1" href="#"--%>
-						<%--rel="/purchasing/order/orderList.action?type=2" icon="icon-log"><span--%>
-						<%--class="icon icon-log">&nbsp;</span><span class="nav">部门经理审核</span></a>--%>
-				<%--</div></li>--%>
-			<%--<li><div>--%>
-					<%--<a title="总经理审核" ref="1_1" href="#"--%>
-						<%--rel="/purchasing/order/orderList.action?type=3" icon="icon-log"><span--%>
-						<%--class="icon icon-log">&nbsp;</span><span class="nav">总经理审核</span></a>--%>
-				<%--</div></li>--%>
-				<%--</ul>--%>
 		</DIV>
 	</DIV>
 

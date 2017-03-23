@@ -14,7 +14,7 @@
 <c:forEach items="${errors}" var="error">
 <div color="red">${error.defaultMessage}<br/></div>
 </c:forEach>
-<form id="itemForm" action="${pageContext.request.contextPath }/items/editItemSubmit.action" method="post" enctype="multipart/form-data">
+<form id="itemForm" action="${pageContext.request.contextPath }/items/editItemSubmit" method="post" enctype="multipart/form-data">
 <input type="hidden" name="id" value="${id }"/>
 修改商品信息：
 <table width="100%" border=1>
