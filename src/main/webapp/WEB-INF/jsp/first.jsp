@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title>药品采购平台</title>
+    <title>采购平台</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <LINK rel="stylesheet" type="text/css" href="<c:url value='/js/easyui/styles/default.css'/>">
