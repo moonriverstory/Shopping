@@ -28,6 +28,7 @@
                 /images/**=anon
                 /js/**=anon
                 /styles/**=anon
+                /jqueryLib/**=anon
 
                 <!--验证码-->
                 /validatecode.jsp=anon
