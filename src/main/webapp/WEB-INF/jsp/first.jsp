@@ -3,13 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/jsp/common_css.jsp" %>
 <%@ include file="/WEB-INF/jsp/common_js.jsp" %>
+<LINK rel="stylesheet" type="text/css" href="<c:url value='/js/easyui/styles/default.css'/>">
 
 <html>
 <head>
     <title>采购平台</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
-    <LINK rel="stylesheet" type="text/css" href="<c:url value='/js/easyui/styles/default.css'/>">
     <SCRIPT type="text/javascript">
 
         var tabOnSelect = function (title) {
@@ -19,13 +19,14 @@
 
             var src = iframe.attr('src');//获取iframe的src
             //当重新选中tab时将ifram的内容重新加载一遍，目的是获取当前页面的最新内容
-            if (src)
+            if (src) {
                 $('#tabs').tabs('update', {
                     tab: currTab,
                     options: {
-                        content: createFrame(src)//ifram内容
+                        content: createFrame(src)//iframe内容
                     }
                 });
+            }
 
         };
         var _menus;
@@ -44,10 +45,11 @@
                     <%--alert('菜单加载异常!');--%>
                 <%--}--%>
             <%--});--%>
-
+            //debugger;
             $('#tabs').tabs('add', {
                 title: '欢迎使用',
                 content: createFrame("<c:url value='/welcome.jsp'/>")
+
             }).tabs({
                 //当重新选中tab时将ifram的内容重新加载一遍
                 onSelect: tabOnSelect
@@ -112,8 +114,7 @@
                             <a title="${menu.name}" ref="1_1" href="#"
                                rel="<c:url value='/'/>/${menu.url}" icon="icon-log"><span
                                     class="icon icon-log">&nbsp;</span>
-                                <span class="nav"><a
-                                        href=javascript:addTab('${menu.name}',"<c:url value='/'/>/${menu.url}")>${menu.name}</a>
+                                <span class="nav"><a href=javascript:addTab('${menu.name}',"<c:url value='/'/>items/queryItems")>${menu.name}</a>
                             </span>
                             </a>
                         </div>
