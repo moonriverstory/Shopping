@@ -1,7 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/jsp/common_js.jsp" %>
+<%@ include file="/WEB-INF/jsp/common_css.jsp" %>
 
 <html>
 <head>
@@ -9,7 +10,6 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/commonLib/bootstrap/css/bootstrap.css'/>">
     <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
 
     <script type="text/javascript">
@@ -17,9 +17,9 @@
         function loginsubmit() {
             $("#loginform").submit();
         }
-    </SCRIPT>
-</HEAD>
-<BODY style="background: gray url(<c:url value='/images/login/bg1.jpg'/>) repeat-x;">
+    </script>
+</head>
+<body>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -39,11 +39,11 @@
                 <div class="checkbox">
                     <label><input type="checkbox" name="rememberMe"/>自动登录</label>
                 </div>
-                <button type="submit" class="btn btn-default" onclick="loginsubmit()">登录</button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block" onclick="loginsubmit()">登录</button>
             </form>
         </div>
     </div>
 </div>
 
-</BODY>
+</body>
 </HTML>
