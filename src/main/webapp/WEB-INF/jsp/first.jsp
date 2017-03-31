@@ -3,132 +3,106 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/jsp/common_css.jsp" %>
 <%@ include file="/WEB-INF/jsp/common_js.jsp" %>
-<LINK rel="stylesheet" type="text/css" href="<c:url value='/js/easyui/styles/default.css'/>">
+
 
 <html>
 <head>
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
     <title>采购平台</title>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <SCRIPT type="text/javascript">
 
-        var tabOnSelect = function (title) {
-            //根据标题获取tab对象
-            var currTab = $('#tabs').tabs('getTab', title);
-            var iframe = $(currTab.panel('options').content);//获取标签的内容
-
-            var src = iframe.attr('src');//获取iframe的src
-            //当重新选中tab时将ifram的内容重新加载一遍，目的是获取当前页面的最新内容
-            if (src) {
-                $('#tabs').tabs('update', {
-                    tab: currTab,
-                    options: {
-                        content: createFrame(src)//iframe内容
-                    }
-                });
-            }
-
-        };
-        var _menus;
-        //预加载方法
-        $(function () {
-            //通过ajax请求菜单
-            <%--$.ajax({--%>
-                <%--url: "<c:url value='/'/>menu.json",--%>
-                <%--type: 'POST',--%>
-                <%--dataType: 'json',--%>
-                <%--success: function (data) {--%>
-                    <%--_menus = data;--%>
-                    <%--initMenu(_menus);//解析json数据，将菜单生成--%>
-                <%--},--%>
-                <%--error: function (msg) {--%>
-                    <%--alert('菜单加载异常!');--%>
-                <%--}--%>
-            <%--});--%>
-            //debugger;
-            $('#tabs').tabs('add', {
-                title: '欢迎使用',
-                content: createFrame("<c:url value='/welcome.jsp'/>")
-
-            }).tabs({
-                //当重新选中tab时将ifram的内容重新加载一遍
-                onSelect: tabOnSelect
-            });
-
-            //修改密码
-            $('#modifypwd').click(menuclick);
-
-        });
-
-        //退出系统方法
-        function logout() {
-            _confirm('您确定要退出本系统吗?', null,
-                    function () {
-                        location.href = "<c:url value='/'/>logout";
-                    }
-            )
-        }
-
-        //帮助
-        function showhelp() {
-            window.open("<c:url value='/'/>" + "help/help.html", '帮助文档');
-        }
-
-    </SCRIPT>
-
-    <META name="GENERATOR" content="MSHTML 9.00.8112.16540">
-</HEAD>
-
-<BODY style="overflow-y: hidden;" class="easyui-layout" scroll="no">
-<DIV style='background: url("<c:url value='/'/>images/layout-browser-hd-bg.gif") repeat-x center 50% rgb(127, 153, 190); height: 30px; color: rgb(255, 255, 255); line-height: 20px; overflow: hidden; font-family: Verdana, 微软雅黑, 黑体;'
-        border="false" split="true" region="north">
-		<SPAN style="padding-right: 20px; float: right;" class="head">
-			欢迎当前用户：${activeUser.username}&nbsp;&nbsp;
-			<A href=javascript:showhelp()>使用帮助</A>
-			&nbsp;&nbsp;
-			<A title='修改密码' ref='modifypwd' href="#" rel="<c:url value='/'/>user/updatepwd" icon='icon-null'
-               id="modifypwd">修改密码</A>
-			&nbsp;&nbsp;
-			<A id="loginOut" href=javascript:logout()>退出系统</A>
-		</SPAN>
-    <SPAN style="padding-left: 10px; font-size: 16px;"><IMG align="absmiddle" src="images/blocks.gif" width="20"
-                                                            height="20">商品查询购买系统</SPAN>
-    <SPAN style="padding-left: 15px;" id="News"></SPAN>
-</DIV>
-
-<DIV style="background: rgb(210, 224, 242); height: 30px;" split="false"
-     region="south">
-
-    <DIV class="footer">
-        系统版本号：${version_number}&nbsp;&nbsp;&nbsp;发布日期：${version_date}
-    </DIV>
-</DIV>
-
-<DIV style="width: 180px;" id="west" title="导航菜单" split="true" region="west" hide="true">
-    <DIV id="nav" class="easyui-accordion" border="false" fit="true">
-        <c:if test="${activeUser.menus!=null}">
-            <ul>
-                <c:forEach items="${activeUser.menus}" var="menu">
-                    <li>
-                        <div>
-                            <a title="${menu.name}" ref="1_1" href="#"
-                               rel="<c:url value='/'/>/${menu.url}" icon="icon-log"><span
-                                    class="icon icon-log">&nbsp;</span>
-                                <span class="nav"><a href=javascript:addTab('${menu.name}',"<c:url value='/'/>items/queryItems")>${menu.name}</a>
-                            </span>
-                            </a>
-                        </div>
-                    </li>
-                </c:forEach>
-            </ul>
-        </c:if>
-    </DIV>
-</DIV>
-
-<DIV style="background: rgb(238, 238, 238); overflow-y: hidden;" id="mainPanle" region="center">
-    <DIV id="tabs" class="easyui-tabs" border="false" fit="true"></DIV>
-</DIV>
+<script type="text/javascript">
+    //预加载方法
+    $(function () {
 
 
-</BODY>
-</HTML>
+    });
+
+    //退出系统方法
+    function logout() {
+        _confirm('您确定要退出本系统吗?', null,
+                function () {
+                    location.href = "<c:url value='/'/>logout";
+                }
+        )
+    }
+
+    //帮助
+    function showhelp() {
+        window.open("<c:url value='/'/>" + "help/help.html", '帮助文档');
+    }
+</script>
+</head>
+
+<body>
+
+<!--上部导航-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand">Shopping Center</a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a style="color: green">欢迎当前用户：${activeUser.username}</a>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" />
+            </div> <button type="submit" class="btn btn-default">TODO</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="javascript:showhelp()">帮助</a>
+            </li>
+            <li>
+                <a href="<c:url value='/'/>user/updatepwd">修改密码</a>
+            </li>
+            <li>
+                <a href="javascript:logout()">退出系统</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--中部-->
+<div class="container-fluid">
+    <div class="row">
+        <!-- 左侧导航 -->
+        <div class="col-sm-3 col-md-2 sidebar">
+            <c:if test="${activeUser.menus!=null}">
+                <ul class="nav nav-sidebar">
+                    <c:forEach items="${activeUser.menus}" var="menu">
+                        <li>
+                            <a href="javascript:addTab('${menu.url}')">${menu.name}</a>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </c:if>
+        </div>
+        <!-- 右侧主窗体 -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="jumbotron">
+                <h1>
+                    Tab
+                </h1>
+                <p>
+                    Main Window.
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                </p>
+            </div>
+            <!--底部地址-->
+            <div class="row clearfix" style="margin-left: 7%;width: 80%">
+                <div class="col-md-12 column">
+                    <address> <strong>Twitter, Inc.</strong><br/> 25 Culture Road, WestLake <br/> Hangzhou, ZJ<br/> <abbr title="Phone">P:</abbr> (123) 456-7890</address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
