@@ -10,27 +10,35 @@
     <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
     <title>采购平台</title>
 
-<script type="text/javascript">
-    //预加载方法
-    $(function () {
+    <script type="text/javascript">
+        //预加载方法
+        $(function () {
+            var item = {'id': '1', 'name': '首页', 'url': "<c:url value='/welcome.jsp'/>", 'closable': false};
+            closableTab.addTab(item);
+        });
 
-
-    });
-
-    //退出系统方法
-    function logout() {
-        _confirm('您确定要退出本系统吗?', null,
-                function () {
+        //退出系统方法
+        function logout() {
+            $.confirm({
+                title: 'Confirm!',
+                content: '您确定要退出本系统吗?',
+                confirm: function(){
                     location.href = "<c:url value='/'/>logout";
                 }
-        )
-    }
+            });
+        }
 
-    //帮助
-    function showhelp() {
-        window.open("<c:url value='/'/>" + "help/help.html", '帮助文档');
-    }
-</script>
+        //帮助
+        function show_help() {
+            window.open("<c:url value='/'/>" + "help/help.html", '帮助文档');
+        }
+
+        //添加右侧主窗标签页
+        function addWindowTab(name, url) {
+            var item = {'id': url.replace('/',''), 'name': name, 'url': url, 'closable': true};
+            closableTab.addTab(item);
+        }
+    </script>
 </head>
 
 <body>
@@ -48,12 +56,13 @@
         </ul>
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-                <input type="text" class="form-control" />
-            </div> <button type="submit" class="btn btn-default">TODO</button>
+                <input type="text" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-default">TODO</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="javascript:showhelp()">帮助</a>
+                <a href="javascript:show_help()">帮助</a>
             </li>
             <li>
                 <a href="<c:url value='/'/>user/updatepwd">修改密码</a>
@@ -74,7 +83,7 @@
                 <ul class="nav nav-sidebar">
                     <c:forEach items="${activeUser.menus}" var="menu">
                         <li>
-                            <a href="javascript:addTab('${menu.url}')">${menu.name}</a>
+                            <a href="javascript:addWindowTab('${menu.name}','${menu.url}')">${menu.name}</a>
                         </li>
                     </c:forEach>
                 </ul>
@@ -82,23 +91,12 @@
         </div>
         <!-- 右侧主窗体 -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="jumbotron">
-                <h1>
-                    Tab
-                </h1>
-                <p>
-                    Main Window.
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
-                </p>
+            <!-- Dynamic tabs 相关代码 begin -->
+            <ul class="nav nav-tabs" role="tablist">
+            </ul>
+            <div class="tab-content" style="width:100%;">
             </div>
-            <!--底部地址-->
-            <div class="row clearfix" style="margin-left: 7%;width: 80%">
-                <div class="col-md-12 column">
-                    <address> <strong>Twitter, Inc.</strong><br/> 25 Culture Road, WestLake <br/> Hangzhou, ZJ<br/> <abbr title="Phone">P:</abbr> (123) 456-7890</address>
-                </div>
-            </div>
+            <!-- Dynamic tabs 相关代码 end -->
         </div>
     </div>
 </div>
