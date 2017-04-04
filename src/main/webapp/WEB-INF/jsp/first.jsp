@@ -35,7 +35,8 @@
 
         //添加右侧主窗标签页
         function addWindowTab(name, url) {
-            var item = {'id': url.replace('/',''), 'name': name, 'url': url, 'closable': true};
+            //debugger;
+            var item = {'id': url.replace(/\//g,''), 'name': name, 'url': url, 'closable': true};
             closableTab.addTab(item);
         }
     </script>

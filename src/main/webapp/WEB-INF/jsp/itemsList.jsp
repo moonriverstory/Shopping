@@ -10,7 +10,7 @@
     <script type="text/javascript">
         function deleteItems() {
             //将form的action指向删除商品的地址
-            document.itemsForm.action = "${pageContext.request.contextPath}/items/deleteItems";
+            document.itemsForm.action = "<c:url value='/'/>items/deleteItems";
             //进行form提交
             document.itemsForm.submit();
         }
@@ -19,10 +19,10 @@
 <body>
 当前用户:${usercode}
 <c:if test="${usercode!=null}">
-    <a href="${pageContext.request.contextPath}/logout">退出</a>
+    <a href="<c:url value='/'/>logout">退出</a>
 </c:if>
 
-<form name="itemsForm" action="${pageContext.request.contextPath }/items/queryItems" method="post">
+<form name="itemsForm" action="<c:url value='/'/>items/queryItems" method="post">
     查询条件：
     <table width="100%" border=1>
         <tr>
@@ -41,6 +41,7 @@
     商品列表：
     <table width="100%" border=1>
         <tr>
+            <td></td>
             <td>商品名称</td>
             <td>商品价格</td>
             <td>生产日期</td>
@@ -58,10 +59,10 @@
                 <td>
                     <!--有item:update权限才现实修改链接，没有权限则不显示修改链接-->
                     <shiro:hasPermission name="item:update">
-                        <a href="${pageContext.request.contextPath}/items/editItems?id=${item.id}">修改</a>
+                        <a href="<c:url value='/'/>items/editItems?id=${item.id}">修改</a>
                     </shiro:hasPermission>
                 </td>
-                <td><a href="${pageContext.request.contextPath}/items/viewItems/${item.id}">商品查看</a></td>
+                <td><a href="<c:url value='/'/>items/viewItems/${item.id}">商品查看</a></td>
             </tr>
         </c:forEach>
     </table>

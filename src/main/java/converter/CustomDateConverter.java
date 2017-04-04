@@ -13,7 +13,7 @@ public class CustomDateConverter implements Converter<String, Date> {
     public Date convert(String source) {
 
         try {
-            return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").parse(source);
+            return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse(source);
         } catch (Exception e) {
             e.printStackTrace();
         }
