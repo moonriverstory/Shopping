@@ -1,4 +1,4 @@
-package converter;
+package paramConverter;
 
 
 import org.springframework.core.convert.converter.Converter;

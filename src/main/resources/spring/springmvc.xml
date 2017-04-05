@@ -35,8 +35,8 @@
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="converter.CustomDateConverter"/>
-                <bean class="converter.StringTrimConverter"/>
+                <bean class="paramConverter.CustomDateConverter"/>
+                <bean class="paramConverter.StringTrimConverter"/>
             </set>
         </property>
     </bean>

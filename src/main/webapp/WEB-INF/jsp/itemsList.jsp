@@ -18,24 +18,19 @@
     </script>
 </head>
 <body>
-当前用户:${usercode}
-<c:if test="${usercode!=null}">
-    <a href="<c:url value='/'/>logout">退出</a>
-</c:if>
 
 <form name="itemsForm" action="<c:url value='/'/>items/queryItems" method="post">
     查询条件：
     <table width="100%" border=1>
         <tr>
+            <th>
+                商品名称
+            </th>
             <td>
-                <select>
-                    <c:forEach items="${itemsType}" var="item">
-                        <option value="${item.key}">${item.value}</option>
-                    </c:forEach>
-                </select>
+               <input type="text" name="itemName" value="${itemName}"/>
             </td>
             <td><input type="submit" value="查询"/>
-                <input type="button" value="批量删除" onclick="deleteItems()">
+                <input type="button" value="删除" onclick="deleteItems()">
             </td>
         </tr>
     </table>
