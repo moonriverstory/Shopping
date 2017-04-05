@@ -1,4 +1,17 @@
-//子页面不用iframe，用div展示
+/**
+ * 添加和关闭bootstrap标签页
+ *
+ * 子页面不用iframe，用div展示
+ * @type {{addTab: closableTab.addTab, closeTab: closableTab.closeTab}}
+ */
+/*
+ <!-- Dynamic tabs 相关代码 begin -->
+ <ul class="nav nav-tabs" role="tablist">
+ </ul>
+ <div class="tab-content" style="width:100%;">
+ </div>
+ <!-- Dynamic tabs 相关代码 end -->
+ */
 var closableTab = {
 
     //添加tab
@@ -49,4 +62,4 @@ var closableTab = {
         $("#"+val).remove();
         $("#"+containerId).remove();
     }
-}
+};

@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -54,7 +55,7 @@
                 <td><input type="checkbox" name="delete_id" value="${item.id}"></td>
                 <td>${item.name}</td>
                 <td>${item.price}</td>
-                <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/></td>
+                <td><fmt:formatDate value="${item.createtime}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
                 <td>${item.detail }</td>
                 <td>
                     <!--有item:update权限才现实修改链接，没有权限则不显示修改链接-->

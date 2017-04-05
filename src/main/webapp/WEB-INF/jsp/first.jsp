@@ -22,20 +22,25 @@
             $.confirm({
                 title: 'Confirm!',
                 content: '您确定要退出本系统吗?',
-                confirm: function(){
-                    location.href = "<c:url value='/'/>logout";
+                buttons: {
+                    "确定": function () {
+                        location.href = "<c:url value='/'/>logout";
+                    },
+                    "取消": function () {
+                        $.alert('Canceled!');
+                    }
                 }
             });
         }
 
         //帮助
         function show_help() {
-            window.open("<c:url value='/'/>" + "help/help.html", '帮助文档');
+            window.open("<c:url value='/help/help.html'/>", '帮助文档');
         }
 
         //添加右侧主窗标签页
         function addWindowTab(name, url) {
-            //debugger;
+            //js正则表达式不要用单引号或者双引号括起来，要以两个斜线/ /括起来，g代表全部匹配都算
             var item = {'id': url.replace(/\//g,''), 'name': name, 'url': url, 'closable': true};
             closableTab.addTab(item);
         }

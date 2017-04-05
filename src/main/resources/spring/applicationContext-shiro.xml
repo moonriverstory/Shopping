@@ -27,7 +27,6 @@
                 <!--对静态资源设置匿名访问-->
                 /images/**=anon
                 /js/**=anon
-                /styles/**=anon
                 /commonLib/**=anon
 
                 <!--验证码-->
@@ -45,6 +44,7 @@
                 /index.jsp=user
                 /first=user
                 /welcome.jsp=user
+                /help/help.html=user
 
                 <!-- -/**=authc 表示所有的url都必须认证通过才可以访问- -->
                 /** = authc

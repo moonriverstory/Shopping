@@ -6,13 +6,25 @@
 </head>
 
 <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../commonLib/jquery-confirm/css/jquery-confirm.css">
+
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="../../commonLib/jquery-confirm/jquery.confirm/jquery.confirm.js"></script>
-<link rel="stylesheet" type="text/css" href="../../commonLib/jquery-confirm/jquery.confirm/jquery.confirm.css">
+<script src="../../commonLib/jquery-confirm/js/jquery-confirm.js"></script>
+
 
 <script>
     $(function () {
+        $(function(){
+            $(".example-jquery-confirm-alert").bind("click",function(){
+                $.alert(
+                        {
+                            title : "你好啊",
+                            content: "这样真的好？"
+                        }
+                );
+            })
+        });
 
     });
 
@@ -20,8 +32,13 @@
         $.confirm({
             title: 'Confirm!',
             content: '您确定要退出本系统吗?',
-            confirm: function(){
-                location.href = "<c:url value='/'/>logout";
+            buttons: {
+                confirm: function () {
+                    $.alert('Confirmed!');
+                },
+                "取消": function () {
+                    $.alert('Canceled!');
+                }
             }
         });
     }
@@ -36,6 +53,12 @@
             <a href="javascript:logout()">退出系统</a>
         </div>
     </div>
+</div>
+
+<div class="col-md-3">
+    <button class="btn btn-primary btn-block example-jquery-confirm-alert">animal</button>
+    <p class="text-success">tok tik</p>
+
 </div>
 
 </body>
